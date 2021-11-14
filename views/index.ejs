@@ -1,0 +1,28 @@
+<% include ./partials/header %>
+<div class="container">
+	<div class="row">
+        <h2 align="center">Νέος Ναύτης</h2>
+		<div class="col-12">
+			<nav class="navbar navbar-light">
+				<div class="container-fluid">
+					<form action="/books/search" method="GET" class="d-flex my-2 mx-auto">
+						<input class="form-control me-2" type="search" name="q" id="search" aria-label="Search">
+						<button class="btn btn-outline-primary" type="submit">Αναζήτηση</button>
+					</form>
+				</div>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <a href="/sailor/register" class="btn btn-primary">Εισαγωγή νέου ναύτη</a>
+      </div>
+    </div>
+</div
+
+<% include ./partials/footer %>

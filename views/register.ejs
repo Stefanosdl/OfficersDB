@@ -1,0 +1,84 @@
+<% include ./partials/header %>
+<div class="container">
+	<div class="row">
+		<h2 align="center">Νέος Ναύτης</h2>
+		<form action="/sailor/register" method="POST" class="row g-3">
+			<div class="col-md-4">
+				<label for="firstname" class="form-label">Όνομα</label>
+				<input type="text" class="form-control" name="firstname" id="firstname">
+			</div>
+			<div class="col-md-4">
+				<label for="lastname" class="form-label">Επίθετο</label>
+				<input type="text" class="form-control" name="lastname" id="lastname">
+			</div>
+			<div class="col-md-4">
+				<label for="adeptness" class="form-label">Ειδικότητα</label>
+				<input type="text" class="form-control" name="adeptness" id="adeptness">
+			</div>
+			<div class="col-3">
+				<label for="arrival" class="form-label">Ημ/νία Άφιξης</label>
+				<input type="date" class="form-control" name="arrival" id="arrival">
+			</div>
+			<div class="col-3">
+				<label for="classification" class="form-label">Ημ/νία Κατάταξης</label>
+				<input type="date" class="form-control" name="classification" id="classification">
+			</div>
+			<div class="col-md-3">
+				<label for="release" class="form-label">Πιθανή Ημ/νία Απόλυσης</label>
+				<input type="date" class="form-control" name="release" id="release">
+			</div>
+			<div class="col-md-3">
+				<label for="serve" class="form-label">Μήνες Υπηρέτησης</label>
+				<input type="number" class="form-control" name="serve" id="serve">
+			</div>
+			<div class="col-md-3">
+				<label for="police" class="form-label">Αστυνομικό Τμήμα</label>
+				<input type="text" class="form-control" name="police" id="police">
+			</div>
+			<div class="col-md-3">
+				<label for="father" class="form-label">Όνομα Πατέρα</label>
+				<input type="text" class="form-control" name="father" id="father">
+			</div>
+			<div class="col-md-3">
+				<label for="mother" class="form-label">Όνομα Μητέρας</label>
+				<input type="text" class="form-control" name="mother" id="mother">
+			</div>
+			<div class="col-md-3">
+				<label for="address" class="form-label">Διεύθυνση</label>
+				<input type="text" class="form-control" name="address" id="address">
+			</div>
+			<div class="col-md-2">
+				<label for="esso" class="form-label">ΕΣΣΟ</label>
+				<input type="text" class="form-control" name="esso" id="esso">
+			</div>
+			<div class="col-md-2">
+				<label for="fitness" class="form-label">Σωματική Ικανότητα</label>
+				<input type="text" class="form-control" name="fitness" id="fitness">
+			</div>
+			<div class="col-md-2">
+				<label for="driver" class="form-label">Άδεια οδήγησης</label>
+				<input type="text" class="form-control" name="driver" id="driver">
+			</div>
+			<div class="col-md-4">
+				<label for="knowledge" class="form-label">Γραμματικές Γνώσεις</label>
+				<input type="text" class="form-control" name="knowledge" id="knowledge">
+			</div>
+			<div class="col-md-4">
+				<label for="home" class="form-label">Σταθερό τηλέφωνο</label>
+				<input type="text" class="form-control" name="home" id="home">
+			</div>
+			<div class="col-md-4">
+				<label for="mobile" class="form-label">Κινητό τηλέφωνο</label>
+				<input type="text" class="form-control" name="mobile" id="mobile">
+			</div>
+			<div class="col-md-4">
+				<label for="isReleased" class="form-label">Απολύθηκε</label>
+				<input type="text" class="form-control" name="isReleased" id="isReleased">
+			</div>
+			<div class="text-center">
+				<button class="btn btn-primary">Εγγραφή</button>
+			</div>
+		</form>
+	</div>
+</div>
+<% include ./partials/footer %>
