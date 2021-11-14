@@ -78,6 +78,6 @@ app.get("/", (req, res) => {
 	res.render("index");
 });
 
-app.listen(8080, () => {
+app.listen(3000, () => {
     console.log("Listening in port 3000");
 });

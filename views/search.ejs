@@ -36,7 +36,7 @@
 					<li class="list-group-item"><strong>Σταθερό τηλέφωνο: </strong><%= sailor.home %></li>
 					<li class="list-group-item"><strong>Κινητό τηλέφωνο: </strong><%= sailor.mobile %></li>
 					<li class="list-group-item"><strong>Απολύθηκε: </strong><%= sailor.isReleased %></li>
-					<% if(sailor.disposals[0] != undefined) { %>
+					<% if(sailor.disposals != undefined) { %>
 						<% if(sailor.disposals[0].startTime != undefined) { %>
 							<li class="list-group-item"><strong>Ημέρα μετάθεσης/διάθεσης: </strong><%= sailor.disposals[0].startTime.toISOString().split('T')[0] %></li>
 						<% } %>
