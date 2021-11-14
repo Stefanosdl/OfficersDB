@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Sailor = require("../models/sailors");
+const Disposal = require("../models/disposal");
+const datediff = require("../utils/calculateDate");
 
 dbUrl = "mongodb://127.0.0.1:27017/Navy";
 
@@ -17,7 +19,9 @@ db.once("open", () => {
 
 const seedDB = async () => {
     //create sailor
+    await Disposal.deleteMany({});
     await Sailor.deleteMany({});
+
     var sailor = new Sailor({
         firstname: "Στέφανος",
         lastname: "Διανέλλος",
@@ -43,6 +47,17 @@ const seedDB = async () => {
         changes: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     });
 
+    var disposal = new Disposal({
+        startTime: new Date("2021-10-04"),
+        daysCount: undefined,
+        retunTime: new Date("2021-10-04")
+    });
+    console.log(disposal.retunTime)
+
+    var temp1 = disposal.startTime;
+    var temp2 = disposal.returnTime;
+    var countDays = datediff.calculateDate(temp1, temp2);
+    disposal.daysCount = countDays;
     await sailor.save();
 }
 

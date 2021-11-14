@@ -3,16 +3,16 @@ const Schema = mongoose.Schema;
 
 const DisposalSchema = new Schema({
     startTime: {             //Πότε πάει
-        type: String,
-        default: ""
+        type: Date,
+        default: undefined
     },
     daysCount: {    //Μετράει κάθε μέρα πόσες μέρες λείπει σε απόσπαση
         type: Number,
         default: 0
     },
-    return: {             //Πότε πάει
-        type: String,
-        default: ""
+    returnTime: {             //Πότε πάει
+        type: Date,
+        default: undefined
     }
 });
 
