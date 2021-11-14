@@ -2,10 +2,11 @@
 
 <% for (let sailor of searchedSailors){%>
 	<div class="container">
-		<h2 align="center">Στοιχεία Ναύτη</h2>
+		<h2 align="center">Στοιχεία Ν/Δ</h2>
 		<div class="card mb-3 mx-auto" style="max-width: 540px;">
 			<div class="row g-0">
 				<ul class="list-group list-group-flush">
+					<li class="list-group-item"><strong>Βαθμός: </strong><%= sailor.grade %></li>
 					<li class="list-group-item"><strong>Όνομα: </strong><%= sailor.firstname %></li>
 					<li class="list-group-item"><strong>Επίθετο: </strong><%= sailor.lastname %></li>
 					<li class="list-group-item"><strong>Ειδικότητα: </strong><%= sailor.adeptness %></li>
@@ -27,6 +28,9 @@
 					<li class="list-group-item"><strong>Σταθερό τηλέφωνο: </strong><%= sailor.home %></li>
 					<li class="list-group-item"><strong>Κινητό τηλέφωνο: </strong><%= sailor.mobile %></li>
 					<li class="list-group-item"><strong>Απολύθηκε: </strong><%= sailor.isReleased %></li>
+					<li class="list-group-item"><strong>Ημέρα μετάθεσης/διάθεσης: </strong><%= sailor.disposals[0].startTime.toISOString().split('T')[0] %></li>
+					<li class="list-group-item"><strong>Ημέρα που γυρνάει από μετάθεση/διάθεση: </strong><%= sailor.disposals[0].returnTime.toISOString().split('T')[0] %></li>
+					<li class="list-group-item"><strong>Ημέρες που είναι/ήταν σε μετάθεση: </strong><%= sailor.disposals[0].daysCount %></li>
 					<li class="list-group-item"><strong>Μεταβολές: </strong><%= sailor.changes %></li>
 				</ul>
 			</div>

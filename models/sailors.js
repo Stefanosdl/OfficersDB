@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const SailorSchema = new Schema({
+    grade: String,
     firstname: String,
     lastname: String,
     adeptness: String,
@@ -39,12 +40,10 @@ const SailorSchema = new Schema({
         type: Number,
         default: 0
     },
-    disposals: [
-	    {
+    disposals: [{
 	    	type: Schema.Types.ObjectId,
 	    	ref: "Disposal"
-	    }
-	]
+    }]
 });
 
 module.exports = mongoose.model("Sailor", SailorSchema);

@@ -23,6 +23,7 @@ const seedDB = async () => {
     await Sailor.deleteMany({});
 
     var sailor = new Sailor({
+        grade: "Ναύτης",
         firstname: "Στέφανος",
         lastname: "Διανέλλος",
         adeptness: "ΗΝ/ΗΥ",
@@ -46,18 +47,18 @@ const seedDB = async () => {
         isReleased: "ΟΧΙ",
         changes: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     });
-
+    // create disposal
     var disposal = new Disposal({
         startTime: new Date("2021-10-04"),
-        daysCount: undefined,
-        retunTime: new Date("2021-10-04")
+        returnTime: new Date("2021-11-04"),
+        daysCount: 0
     });
-    console.log(disposal.retunTime)
 
-    var temp1 = disposal.startTime;
-    var temp2 = disposal.returnTime;
-    var countDays = datediff.calculateDate(temp1, temp2);
+    var countDays = datediff.calculateDate(disposal.startTime, disposal.returnTime);
     disposal.daysCount = countDays;
+    
+    sailor.disposals.push(disposal);
+    await disposal.save();
     await sailor.save();
 }
 

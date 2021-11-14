@@ -1,17 +1,21 @@
 <% include ./partials/header %>
 <div class="container">
 	<div class="row">
-		<h2 align="center">Νέος Ναύτης</h2>
+		<h2 align="center">Νέος Ν/Δ</h2>
 		<form action="/sailor/register" method="POST" class="row g-3">
-			<div class="col-md-4">
+			<div class="col-md-3">
+				<label for="grade" class="form-label">Βαθμός</label>
+				<input type="text" class="form-control" name="grade" id="grade">
+			</div>
+			<div class="col-md-3">
 				<label for="firstname" class="form-label">Όνομα</label>
 				<input type="text" class="form-control" name="firstname" id="firstname">
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<label for="lastname" class="form-label">Επίθετο</label>
 				<input type="text" class="form-control" name="lastname" id="lastname">
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<label for="adeptness" class="form-label">Ειδικότητα</label>
 				<input type="text" class="form-control" name="adeptness" id="adeptness">
 			</div>

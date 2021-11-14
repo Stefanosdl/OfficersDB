@@ -6,13 +6,13 @@ const DisposalSchema = new Schema({
         type: Date,
         default: undefined
     },
-    daysCount: {    //Μετράει κάθε μέρα πόσες μέρες λείπει σε απόσπαση
-        type: Number,
-        default: 0
-    },
     returnTime: {             //Πότε πάει
         type: Date,
         default: undefined
+    },
+    daysCount: {    //Μετράει κάθε μέρα πόσες μέρες λείπει σε απόσπαση
+        type: Number,
+        default: 0
     }
 });
 
