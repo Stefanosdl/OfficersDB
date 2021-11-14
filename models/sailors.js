@@ -21,18 +21,6 @@ const SailorSchema = new Schema({
     mobile: String,
     isReleased: String,
     changes: String,
-    disposal: {             //Πότε πάει
-        type: String,
-        default: ""
-    },
-    disposalDaysCount: {    //Μετράει κάθε μέρα πόσες μέρες λείπει σε απόσπαση
-        type: Number,
-        default: 0
-    },
-    disposalReturn: {             //Πότε πάει
-        type: String,
-        default: ""
-    },
     defaultTimeoff:  {             //Κανονική άδεια
         type: Number,
         default: 0
@@ -49,6 +37,6 @@ const SailorSchema = new Schema({
         type: Number,
         default: 0
     }
-})
+});
 
 module.exports = mongoose.model("Sailor", SailorSchema);

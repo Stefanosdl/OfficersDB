@@ -13,7 +13,17 @@ router.post("/register", catchAsync(async (req, res, next) => {
         // const newArrival = arrival.toString();
         // const newClassification = classification.toString();
         // const newRelease = release.toString();
-		const sailor = new Sailor({firstname: req.body.firstname, lastname: req.body.lastname, adeptness: req.body.adeptness, arrival: req.body.arrival.toString(), classification: req.body.classification.toString(), release: req.body.release.toString(), serve: req.body.serve, police: req.body.police, father: req.body.father, mother: req.body.mother, address: req.body.address, esso: req.body.esso, fitness: req.body.fitness, driver: req.body.driver, knowledge: req.body.knowledge, home: req.body.home, mobile: req.body.mobile, isReleased: req.body.isReleased, changes: req.body.changes});
+        var defaultTimeoff = 0;
+        if (req.body.serve == 12) {
+            defaultTimeoff = 18;
+        }
+        else if (req.body.serve == 9) {
+            defaultTimeoff = 15;
+        }
+        else if (req.body.serve == 6) {
+            defaultTimeoff = 12;
+        }
+		const sailor = new Sailor({firstname: req.body.firstname, lastname: req.body.lastname, adeptness: req.body.adeptness, arrival: req.body.arrival.toString(), classification: req.body.classification.toString(), release: req.body.release.toString(), serve: req.body.serve, police: req.body.police, father: req.body.father, mother: req.body.mother, address: req.body.address, esso: req.body.esso, fitness: req.body.fitness, driver: req.body.driver, knowledge: req.body.knowledge, home: req.body.home, mobile: req.body.mobile, isReleased: req.body.isReleased, changes: req.body.changes, defaultTimeoff: defaultTimeoff});
         await sailor.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');
