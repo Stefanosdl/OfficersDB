@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const session = require("express-session");
+const flash = require("connect-flash");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -10,6 +11,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const sailorRoutes = require("./routes/sailors");
 
 const MongoDBStore = require("connect-mongo")(session);
+
 dbUrl = "mongodb://127.0.0.1:27017/Navy";
 
 mongoose.connect(dbUrl, {
@@ -18,6 +20,7 @@ mongoose.connect(dbUrl, {
 });
 
 const db = mongoose.connection;
+
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
     console.log("Database connected");
@@ -61,6 +64,13 @@ const sessionConfig = {
 }
 
 app.use(session(sessionConfig));
+app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
+});
 
 app.use("/sailor", sailorRoutes);
 

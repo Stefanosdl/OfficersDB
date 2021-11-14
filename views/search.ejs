@@ -1,0 +1,38 @@
+<% include ./partials/header %>
+
+<% for (let sailor of searchedSailors){%>
+	<div class="container">
+		<h2 align="center">Στοιχεία Ναύτη</h2>
+		<div class="card mb-3 mx-auto" style="max-width: 540px;">
+			<div class="row g-0">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item"><strong>Όνομα: </strong><%= sailor.firstname %></li>
+					<li class="list-group-item"><strong>Επίθετο: </strong><%= sailor.lastname %></li>
+					<li class="list-group-item"><strong>Ειδικότητα: </strong><%= sailor.adeptness %></li>
+					<li class="list-group-item"><strong>Ημ/νία Άφιξης: </strong><%= sailor.arrival %></li>
+					<li class="list-group-item"><strong>Ημ/νία Κατάταξης: </strong><%= sailor.classification %></li>
+					<li class="list-group-item"><strong>Πιθανή Ημ/νία Απόλυσης: </strong><%= sailor.release %></li>
+					<li class="list-group-item"><strong>Μήνες Υπηρέτησης: </strong><%= sailor.serve %></li>
+					<li class="list-group-item"><strong>Αστυνομικό Τμήμα: </strong><%= sailor.police %></li>
+					<li class="list-group-item"><strong>Όνομα Πατέρα: </strong><%= sailor.father %></li>
+					<li class="list-group-item"><strong>Όνομα Μητέρας: </strong><%= sailor.mother %></li>
+					<li class="list-group-item"><strong>Διεύθυνση: </strong><%= sailor.address %></li>
+					<li class="list-group-item"><strong>ΕΣΣΟ: </strong><%= sailor.esso %></li>
+					<li class="list-group-item"><strong>Σωματική Ικανότητα: </strong><%= sailor.fitness %></li>
+					<li class="list-group-item"><strong>Άδεια οδήγησης: </strong><%= sailor.driver %></li>
+					<li class="list-group-item"><strong>Γραμματικές Γνώσεις: </strong><%= sailor.knowledge %></li>
+					<li class="list-group-item"><strong>Σταθερό τηλέφωνο: </strong><%= sailor.home %></li>
+					<li class="list-group-item"><strong>Κινητό τηλέφωνο: </strong><%= sailor.mobile %></li>
+					<li class="list-group-item"><strong>Απολύθηκε: </strong><%= sailor.isReleased %></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mb-3 mx-auto" style="max-width: 540px;">
+			<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
+			<a href="#" class="btn btn-outline-primary float-right">Επεξεργασία</a>
+			<a href="#" class="btn btn-outline-primary float-right">Πληροφορίες</a>
+		</div>
+	</div>
+<% }%>
+
+<% include ./partials/footer %>

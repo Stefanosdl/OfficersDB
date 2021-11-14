@@ -9,14 +9,47 @@ router.get("/register", (req, res) => {
 
 router.post("/register", catchAsync(async (req, res, next) => {
     try {
-		const {firstname, lastname, adeptness, arrival, classification, release, serve, police, father, mother, address, esso, fitness, driver, knowledge, home, mobile, isReleased} = req.body;
-		const sailor = new Sailor({firstname, lastname, adeptness, arrival, classification, release, serve, police, father, mother, address, esso, fitness, driver, knowledge, home, mobile, isReleased});
+		// const {firstname, lastname, adeptness, arrival, classification, release, serve, police, father, mother, address, esso, fitness, driver, knowledge, home, mobile, isReleased} = req.body;
+        // const newArrival = arrival.toString();
+        // const newClassification = classification.toString();
+        // const newRelease = release.toString();
+        // console.log(newArrival);
+		const sailor = new Sailor({firstname: req.body.firstname, lastname: req.body.lastname, adeptness: req.body.adeptness, arrival: req.body.arrival.toString(), classification: req.body.classification.toString(), release: req.body.release.toString(), serve: req.body.serve, police: req.body.police, father: req.body.father, mother: req.body.mother, address: req.body.address, esso: req.body.esso, fitness: req.body.fitness, driver: req.body.driver, knowledge: req.body.knowledge, home: req.body.home, mobile: req.body.mobile, isReleased: req.body.isReleased});
         await sailor.save();
-        res.redirect("/");
+		req.flash("success", "Επιτυχής εγγραφή");
+        res.redirect('/');
 	}
 	catch(e) {
-		res.redirect("/sailor/register");
+        console.log(e.message);
+		req.flash("error", e.message);
+		res.redirect('/sailor/register');
 	}
+}));
+
+router.get("/search", catchAsync(async (req, res) => {
+	try {
+        const query = req.query.q;
+        if (query){
+			const searchedq = query.split(" ");
+            const searchedSailors = await Sailor.find({$or: [{firstname: searchedq[0], lastname: searchedq[1]}, {firstname: searchedq[1], lastname: searchedq[0]}, {lastname: searchedq[0]}, {lastname: searchedq[1]}] });;
+
+            if(searchedSailors == undefined || searchedSailors.length == 0) {
+                req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
+                res.redirect('/');
+            }
+            else {
+                res.render("search", { searchedSailors });;
+            }
+        }
+        else {
+            res.render("index");
+        }
+
+    }
+    catch (e) {
+        req.flash("error", e.message);
+        res.redirect('/');
+    }
 }));
 
 module.exports = router;
