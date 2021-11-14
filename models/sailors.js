@@ -15,6 +15,8 @@ const SailorSchema = new Schema({
     address: String,
     esso: String,
     fitness: String,
+    marital: String,
+    origin: String,
     driver: String,
     knowledge: String,
     home: String,
@@ -36,7 +38,13 @@ const SailorSchema = new Schema({
     totalTimeoff:  {                //Συνολική άδεια
         type: Number,
         default: 0
-    }
+    },
+    disposals: [
+	    {
+	    	type: Schema.Types.ObjectId,
+	    	ref: "Disposal"
+	    }
+	]
 });
 
 module.exports = mongoose.model("Sailor", SailorSchema);
