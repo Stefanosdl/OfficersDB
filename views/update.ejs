@@ -2,152 +2,175 @@
 
 <div class="container">
     <h2 align="center">Επεξεργασία Ν/Δ</h2>
-    <form action="/sailor/<%= sailor._id %>?_method=PUT" method="POST"></form>
+    <form action="/sailor/update/:id?_method=PUT" method="POST">
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Όνομα</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.firstname %>">
+                    <input type="text" class="form-control" name="arr[firstname]" aria-describedby="basic-addon1" value="<%= sailor.firstname %>">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Επίθετο</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.lastname %>">
+                    <input type="text" class="form-control" name="arr[lastname]" aria-describedby="basic-addon1" value="<%= sailor.lastname %>">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>ΑΓΜ</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.registration %>">
+                    <input type="text" class="form-control" name="arr[registration]" aria-describedby="basic-addon1" value="<%= sailor.registration %>">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Ειδικότητα</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.adeptness %>">
+                    <input type="text" class="form-control" name="arr[adeptness]" aria-describedby="basic-addon1" value="<%= sailor.adeptness %>">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Βαθμός</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.grade %>">
+                    <input type="text" class="form-control" name="arr[grade]" aria-describedby="basic-addon1" value="<%= sailor.grade %>">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Ημ/νία Άφιξης</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.arrival %>">
+                    <input type="text" class="form-control" name="arr[arrival]" aria-describedby="basic-addon1" value="<%= sailor.arrival %>">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Ημ/νία Κατάταξης</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.classification %>">
+                    <input type="text" class="form-control" name="arr[classification]" aria-describedby="basic-addon1" value="<%= sailor.classification %>">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Πιθανή Ημ/νία Απόλυσης</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.release %>">
+                    <input type="text" class="form-control" name="arr[release]" aria-describedby="basic-addon1" value="<%= sailor.release %>">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Μήνες Υπηρέτησης</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.serve %>">
+                    <input type="number" class="form-control" name="arr[serve]" aria-describedby="basic-addon1" value="<%= sailor.serve %>">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Αστυνομικό Τμήμα</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.police %>">
+                    <input type="text" class="form-control" name="arr[police]" aria-describedby="basic-addon1" value="<%= sailor.police %>">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Διεύθυνση</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.address %>">
+                    <input type="text" class="form-control" name="arr[address]" aria-describedby="basic-addon1" value="<%= sailor.address %>">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Όνομα Πατέρα</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.father %>">
+                    <input type="text" class="form-control" name="arr[father]" aria-describedby="basic-addon1" value="<%= sailor.father %>">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Όνομα Μητέρας</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.mother %>">
+                    <input type="text" class="form-control" name="arr[mother]" aria-describedby="basic-addon1" value="<%= sailor.mother %>">
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>ΕΣΣΟ</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.esso %>">
+                    <input type="text" class="form-control" name="arr[esso]" aria-describedby="basic-addon1" value="<%= sailor.esso %>">
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Σωματική Ικανότητα</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.fitness %>">
+                    <input type="text" class="form-control" name="arr[fitness]" aria-describedby="basic-addon1" value="<%= sailor.fitness %>">
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Άδεια Oδήγησης</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.driver %>">
+                    <input type="text" class="form-control" name="arr[driver]" aria-describedby="basic-addon1" value="<%= sailor.driver %>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><strong>Απολύθηκε</strong></span>
+                    <input type="text" class="form-control" name="arr[isReleased]" aria-describedby="basic-addon1" value="<%= sailor.isReleased %>">
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Γραμματικές Γνώσεις</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.knowledge %>">
+                    <input type="text" class="form-control" name="arr[knowledge]" aria-describedby="basic-addon1" value="<%= sailor.knowledge %>">
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Οικογενειακή Κατάσταση</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.marital %>">
+                    <input type="text" class="form-control" name="arr[marital]" aria-describedby="basic-addon1" value="<%= sailor.marital %>">
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Καταγωγή</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.origin %>">
+                    <input type="text" class="form-control" name="arr[origin]" aria-describedby="basic-addon1" value="<%= sailor.origin %>">
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Σταθερό τηλέφωνο</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.home %>">
+                    <input type="text" class="form-control" name="arr[home]" aria-describedby="basic-addon1" value="<%= sailor.home %>">
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><strong>Κινητό τηλέφωνο</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.mobile %>">
+                    <input type="text" class="form-control" name="arr[mobile]" aria-describedby="basic-addon1" value="<%= sailor.mobile %>">
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="input-group mb-3">
-                    <span class="input-group-text"><strong>Απολύθηκε</strong></span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1" value="<%= sailor.isReleased %>">
+                    <span class="input-group-text"><strong>Αιμοδοτική Άδεια</strong></span>
+                    <input type="number" class="form-control" name="arr[bloodDonation]" aria-describedby="basic-addon1" value="<%= sailor.bloodDonation %>">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><strong>Άδεια Εμβολίου</strong></span>
+                    <input type="number" class="form-control" name="arr[vaccineTimeoff]" aria-describedby="basic-addon1" value="<%= sailor.vaccineTimeoff %>">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><strong>Ημέρα μετάθεσης/διάθεσης</strong></span>
+                    <input type="date" class="form-control" name="arr[startTime]" aria-describedby="basic-addon1" value="<%= sailor.startTime %>">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><strong>Ημέρα που γυρνάει από μετάθεση/διάθεση</strong></span>
+                    <input type="date" class="form-control" name="arr[returnTime]" aria-describedby="basic-addon1" value="<%= sailor.returnTime %>">
                 </div>
             </div>
             <div class="col-md-12">
                 <span class="input-group-text"><strong>Μεταβολές</strong></span>
                 <div class="input-group mb-3">
-                    <textarea class="form-control" name="review[body]" cols="30" rows="10"aria-describedby="basic-addon1"> <%= sailor.changes %> </textarea>
+                    <textarea class="form-control" name="arr[changes]" cols="30" rows="10"aria-describedby="basic-addon1"><%=sailor.changes%></textarea>
                 </div>
             </div>
         </div>
-        <div class="mb-3 mx-auto" style="max-width: 540px;">
-            <a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
-            <a href="#" class="btn btn-outline-primary float-right">Ενημέρωση στοιχείων</a>
-        </div>
+        <a href="/" class="btn btn-outline-primary float-left">Αρχική Σελίδα</a>
+        <button class="btn btn-outline-primary float-right" type="submit">Ενημέρωση στοιχείων</button>
     </form>
 </div>
+<br>
 
 <% include ./partials/footer %>

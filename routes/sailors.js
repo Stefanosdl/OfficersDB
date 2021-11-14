@@ -3,6 +3,7 @@ const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const Sailor = require("../models/sailors");
 const Disposal = require("../models/disposal");
+const diffDays = require("../utils/calculateDate");
 
 router.get("/register", (req, res) => {
 	res.render("register");
@@ -10,10 +11,6 @@ router.get("/register", (req, res) => {
 
 router.post("/register", catchAsync(async (req, res, next) => {
     try {
-		// const {firstname, lastname, adeptness, arrival, classification, release, serve, police, father, mother, address, esso, fitness, driver, knowledge, home, mobile, isReleased} = req.body;
-        // const newArrival = arrival.toString();
-        // const newClassification = classification.toString();
-        // const newRelease = release.toString();
         var defaultTimeoff = 0;
         if (req.body.serve == 12) {
             defaultTimeoff = 18;
@@ -30,7 +27,6 @@ router.post("/register", catchAsync(async (req, res, next) => {
         res.redirect('/');
 	}
 	catch(e) {
-        console.log(e.message);
 		req.flash("error", e.message);
 		res.redirect('/sailor/register');
 	}
@@ -62,9 +58,27 @@ router.get("/search", catchAsync(async (req, res, next) => {
     }
 }));
 
-router.get("/update/:id", catchAsync(async (req, res, next) => {
-    const sailor = await Sailor.findById(req.params.id).populate("disposals").exec()
+router.get("/update/:id", catchAsync(async (req, res) => {
+    const sailor = await Sailor.findById(req.params.id).populate("disposals").exec();
 	res.render("update", { sailor });
+}));
+
+router.put("/update/:id", catchAsync(async (req, res) => {
+    const sailor = await Sailor.findOneAndUpdate(req.params.id, req.body.arr).populate("disposals").exec();
+
+    sailor.totalTimeoff = sailor.defaultTimeoff + sailor.bloodDonation*4 + sailor.vaccineTimeoff*5;
+
+    var tempDays = 0;
+    if(sailor.disposals != undefined && sailor.disposals[0] != undefined) {
+        if(sailor.disposals[0].startTime != undefined && sailor.disposals[0].endTime != undefined){
+            sailor.disposals[0].daysCount = diffDays.calculateDate(sailor.disposals[0].startTime, sailor.disposals[0].endTime);
+        }
+    }
+
+    await sailor.save();
+
+    req.flash("success", "Επιτυχής ενημέρωση!");
+    res.redirect('/');
 }));
 
 module.exports = router;
