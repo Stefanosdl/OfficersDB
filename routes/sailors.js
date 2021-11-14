@@ -24,7 +24,7 @@ router.post("/register", catchAsync(async (req, res, next) => {
         else if (req.body.serve == 6) {
             defaultTimeoff = 12;
         }
-		const sailor = new Sailor({grade: req.body.grade, firstname: req.body.firstname, lastname: req.body.lastname, adeptness: req.body.adeptness, arrival: req.body.arrival.toString(), classification: req.body.classification.toString(), release: req.body.release.toString(), serve: req.body.serve, police: req.body.police, father: req.body.father, mother: req.body.mother, address: req.body.address, esso: req.body.esso, fitness: req.body.fitness, marital: req.body.marital, origin: req.body.origin, driver: req.body.driver, knowledge: req.body.knowledge, home: req.body.home, mobile: req.body.mobile, isReleased: req.body.isReleased, changes: req.body.changes, defaultTimeoff: defaultTimeoff});
+		const sailor = new Sailor({grade: req.body.grade, firstname: req.body.firstname, lastname: req.body.lastname, registration: req.body.registration, adeptness: req.body.adeptness, arrival: req.body.arrival.toString(), classification: req.body.classification.toString(), release: req.body.release.toString(), serve: req.body.serve, police: req.body.police, father: req.body.father, mother: req.body.mother, address: req.body.address, esso: req.body.esso, fitness: req.body.fitness, marital: req.body.marital, origin: req.body.origin, driver: req.body.driver, knowledge: req.body.knowledge, home: req.body.home, mobile: req.body.mobile, isReleased: req.body.isReleased, changes: req.body.changes, defaultTimeoff: defaultTimeoff, totalTimeoff: defaultTimeoff});
         await sailor.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');

@@ -26,12 +26,14 @@ const seedDB = async () => {
         grade: "Ναύτης",
         firstname: "Στέφανος",
         lastname: "Διανέλλος",
+        registration: "84256",
         adeptness: "ΗΝ/ΗΥ",
         arrival: "2021-10-04",
         classification: "2021-09-15",
         release: "2022-09-15",
         serve: 12,
         defaultTimeoff: 18,
+        totalTimeoff: 18,
         police: "ΑΤ. Κερατσινίου/Δραπετσώνας",
         father: "Ορέστης-Κωνσταντίνος",
         mother: "Γαλήνη",
@@ -56,7 +58,6 @@ const seedDB = async () => {
 
     var countDays = datediff.calculateDate(disposal.startTime, disposal.returnTime);
     disposal.daysCount = countDays;
-    
     sailor.disposals.push(disposal);
     await disposal.save();
     await sailor.save();

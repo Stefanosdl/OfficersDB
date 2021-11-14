@@ -9,12 +9,20 @@
 					<li class="list-group-item"><strong>Βαθμός: </strong><%= sailor.grade %></li>
 					<li class="list-group-item"><strong>Όνομα: </strong><%= sailor.firstname %></li>
 					<li class="list-group-item"><strong>Επίθετο: </strong><%= sailor.lastname %></li>
+					<li class="list-group-item"><strong>ΑΓΜ: </strong><%= sailor.registration %></li>
 					<li class="list-group-item"><strong>Ειδικότητα: </strong><%= sailor.adeptness %></li>
 					<li class="list-group-item"><strong>Ημ/νία Άφιξης: </strong><%= sailor.arrival %></li>
 					<li class="list-group-item"><strong>Ημ/νία Κατάταξης: </strong><%= sailor.classification %></li>
 					<li class="list-group-item"><strong>Πιθανή Ημ/νία Απόλυσης: </strong><%= sailor.release %></li>
 					<li class="list-group-item"><strong>Μήνες Υπηρέτησης: </strong><%= sailor.serve %></li>
 					<li class="list-group-item"><strong>Κανονική Άδεια: </strong><%= sailor.defaultTimeoff %></li>
+					<% if(sailor.bloodDonation != 0) { %>
+						<li class="list-group-item"><strong>Αιμοδοτική Άδεια: </strong><%= sailor.bloodDonation %></li>
+					<% } %>
+					<% if(sailor.vaccineTimeoff != 0) { %>
+						<li class="list-group-item"><strong>Άδεια Εμβολίου: </strong><%= sailor.vaccineTimeoff %></li>
+					<% } %>
+					<li class="list-group-item"><strong>Συνολική άδεια: </strong><%= sailor.totalTimeoff %></li>
 					<li class="list-group-item"><strong>Αστυνομικό Τμήμα: </strong><%= sailor.police %></li>
 					<li class="list-group-item"><strong>Όνομα Πατέρα: </strong><%= sailor.father %></li>
 					<li class="list-group-item"><strong>Όνομα Μητέρας: </strong><%= sailor.mother %></li>
@@ -28,9 +36,17 @@
 					<li class="list-group-item"><strong>Σταθερό τηλέφωνο: </strong><%= sailor.home %></li>
 					<li class="list-group-item"><strong>Κινητό τηλέφωνο: </strong><%= sailor.mobile %></li>
 					<li class="list-group-item"><strong>Απολύθηκε: </strong><%= sailor.isReleased %></li>
-					<li class="list-group-item"><strong>Ημέρα μετάθεσης/διάθεσης: </strong><%= sailor.disposals[0].startTime.toISOString().split('T')[0] %></li>
-					<li class="list-group-item"><strong>Ημέρα που γυρνάει από μετάθεση/διάθεση: </strong><%= sailor.disposals[0].returnTime.toISOString().split('T')[0] %></li>
-					<li class="list-group-item"><strong>Ημέρες που είναι/ήταν σε μετάθεση: </strong><%= sailor.disposals[0].daysCount %></li>
+					<% if(sailor.disposals[0] != undefined) { %>
+						<% if(sailor.disposals[0].startTime != undefined) { %>
+							<li class="list-group-item"><strong>Ημέρα μετάθεσης/διάθεσης: </strong><%= sailor.disposals[0].startTime.toISOString().split('T')[0] %></li>
+						<% } %>
+						<% if(sailor.disposals[0].startTime != undefined) { %>
+							<li class="list-group-item"><strong>Ημέρα που γυρνάει από μετάθεση/διάθεση: </strong><%= sailor.disposals[0].returnTime.toISOString().split('T')[0] %></li>
+						<% } %>
+						<% if(sailor.disposals[0].startTime != undefined) { %>
+							<li class="list-group-item"><strong>Ημέρες που είναι/ήταν σε μετάθεση: </strong><%= sailor.disposals[0].daysCount %></li>
+						<% } %>
+					<% } %>
 					<li class="list-group-item"><strong>Μεταβολές: </strong><%= sailor.changes %></li>
 				</ul>
 			</div>
@@ -38,7 +54,6 @@
 		<div class="mb-3 mx-auto" style="max-width: 540px;">
 			<a href="/" class="btn btn-outline-primary">Αρχική Σελίδα</a>
 			<a href="#" class="btn btn-outline-primary float-right">Επεξεργασία</a>
-			<a href="#" class="btn btn-outline-primary float-right">Πληροφορίες</a>
 		</div>
 	</div>
 <% }%>

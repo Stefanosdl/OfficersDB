@@ -5,6 +5,7 @@ const SailorSchema = new Schema({
     grade: String,
     firstname: String,
     lastname: String,
+    registration: String,
     adeptness: String,
     arrival: String,
     classification: String,
@@ -24,19 +25,19 @@ const SailorSchema = new Schema({
     mobile: String,
     isReleased: String,
     changes: String,
-    defaultTimeoff:  {             //Κανονική άδεια
+    defaultTimeoff: {             //Κανονική άδεια
         type: Number,
         default: 0
     },
-    bloodDonation:  {             //Αιμοδοσία
+    bloodDonation: {             //Αιμοδοσία
         type: Number,
         default: 0
     },
-    vaccineTimeoff:  {             //Άδεια Εμβολίου
+    vaccineTimeoff: {             //Άδεια Εμβολίου
         type: Number,
         default: 0
     },
-    totalTimeoff:  {                //Συνολική άδεια
+    totalTimeoff: {                //Συνολική άδεια
         type: Number,
         default: 0
     },
