@@ -19,7 +19,8 @@ const SailorSchema = new Schema({
     knowledge: String,
     home: String,
     mobile: String,
-    isReleased: String
+    isReleased: String,
+    changes: String
 })
 
 module.exports = mongoose.model("Sailor", SailorSchema);

@@ -13,8 +13,7 @@ router.post("/register", catchAsync(async (req, res, next) => {
         // const newArrival = arrival.toString();
         // const newClassification = classification.toString();
         // const newRelease = release.toString();
-        // console.log(newArrival);
-		const sailor = new Sailor({firstname: req.body.firstname, lastname: req.body.lastname, adeptness: req.body.adeptness, arrival: req.body.arrival.toString(), classification: req.body.classification.toString(), release: req.body.release.toString(), serve: req.body.serve, police: req.body.police, father: req.body.father, mother: req.body.mother, address: req.body.address, esso: req.body.esso, fitness: req.body.fitness, driver: req.body.driver, knowledge: req.body.knowledge, home: req.body.home, mobile: req.body.mobile, isReleased: req.body.isReleased});
+		const sailor = new Sailor({firstname: req.body.firstname, lastname: req.body.lastname, adeptness: req.body.adeptness, arrival: req.body.arrival.toString(), classification: req.body.classification.toString(), release: req.body.release.toString(), serve: req.body.serve, police: req.body.police, father: req.body.father, mother: req.body.mother, address: req.body.address, esso: req.body.esso, fitness: req.body.fitness, driver: req.body.driver, knowledge: req.body.knowledge, home: req.body.home, mobile: req.body.mobile, isReleased: req.body.isReleased, changes: req.body.changes});
         await sailor.save();
 		req.flash("success", "Επιτυχής εγγραφή");
         res.redirect('/');
@@ -31,7 +30,7 @@ router.get("/search", catchAsync(async (req, res) => {
         const query = req.query.q;
         if (query){
 			const searchedq = query.split(" ");
-            const searchedSailors = await Sailor.find({$or: [{firstname: searchedq[0], lastname: searchedq[1]}, {firstname: searchedq[1], lastname: searchedq[0]}, {lastname: searchedq[0]}, {lastname: searchedq[1]}] });;
+            const searchedSailors = await Sailor.find({$or: [{firstname: searchedq[0], lastname: searchedq[1]}, {firstname: searchedq[1], lastname: searchedq[0]}, {lastname: searchedq[0]}, {lastname: searchedq[1]}, {firstname: searchedq[0]}, {firstname: searchedq[1]}] });;
 
             if(searchedSailors == undefined || searchedSailors.length == 0) {
                 req.flash("error", "Η αναζήτησή σας δεν είχε κανένα αποτέλεσμα!");
