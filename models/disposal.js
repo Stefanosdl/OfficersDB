@@ -2,15 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const DisposalSchema = new Schema({
-    startTime: {             //Πότε πάει
+    startTime: {
         type: Date,
         default: undefined
     },
-    returnTime: {             //Πότε πάει
+    returnTime: {
         type: Date,
         default: undefined
     },
-    daysCount: {    //Μετράει κάθε μέρα πόσες μέρες λείπει σε απόσπαση
+    daysCount: {
         type: Number,
         default: 0
     }
