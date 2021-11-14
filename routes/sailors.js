@@ -62,4 +62,9 @@ router.get("/search", catchAsync(async (req, res, next) => {
     }
 }));
 
+router.get("/update/:id", catchAsync(async (req, res, next) => {
+    const sailor = await Sailor.findById(req.params.id).populate("disposals").exec()
+	res.render("update", { sailor });
+}));
+
 module.exports = router;
