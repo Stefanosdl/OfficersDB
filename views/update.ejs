@@ -148,18 +148,51 @@
                     <input type="number" class="form-control" name="arr[vaccineTimeoff]" aria-describedby="basic-addon1" value="<%= sailor.vaccineTimeoff %>">
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><strong>Ημέρα μετάθεσης/διάθεσης</strong></span>
-                    <input type="date" class="form-control" name="arr[startTime]" aria-describedby="basic-addon1" value="<%= sailor.startTime %>">
+            <% if(sailor.disposals != undefined && sailor.disposals[0] != undefined) { %>
+                <% if(sailor.disposals[0].startTime != undefined) { %>
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><strong>Ημέρα μετάθεσης/διάθεσης</strong></span>
+                            <input type="date" class="form-control" name="arr[startTime]" aria-describedby="basic-addon1" value="<%= sailor.disposals[0].startTime.toISOString().split('T')[0] %>">
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><strong>Ημέρα μετάθεσης/διάθεσης</strong></span>
+                            <input type="date" class="form-control" name="arr[startTime]" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                <% } %>
+                <% if(sailor.disposals[0].returnTime != undefined) { %>
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><strong>Ημέρα που γυρνάει από μετάθεση/διάθεση</strong></span>
+                            <input type="date" class="form-control" name="arr[returnTime]" aria-describedby="basic-addon1" value="<%= sailor.disposals[0].returnTime.toISOString().split('T')[0] %>">
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><strong>Ημέρα που γυρνάει από μετάθεση/διάθεση</strong></span>
+                            <input type="date" class="form-control" name="arr[returnTime]" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                <% } %>
+            <% } else { %>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><strong>Ημέρα μετάθεσης/διάθεσης</strong></span>
+                        <input type="date" class="form-control" name="arr[startTime]" aria-describedby="basic-addon1">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><strong>Ημέρα που γυρνάει από μετάθεση/διάθεση</strong></span>
-                    <input type="date" class="form-control" name="arr[returnTime]" aria-describedby="basic-addon1" value="<%= sailor.returnTime %>">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><strong>Ημέρα που γυρνάει από μετάθεση/διάθεση</strong></span>
+                        <input type="date" class="form-control" name="arr[returnTime]" aria-describedby="basic-addon1">
+                    </div>
                 </div>
-            </div>
+            <% } %>
             <div class="col-md-12">
                 <span class="input-group-text"><strong>Μεταβολές</strong></span>
                 <div class="input-group mb-3">

@@ -1,7 +1,7 @@
 <service>
 	<id>navydb.exe</id>
 	<name>NavyDB</name>
-	<description>db for navy</description>
+	<description>Navy database</description>
 	<executable>C:\Program Files\nodejs\node.exe</executable>
 	<logmode>rotate</logmode>
 	<argument>--harmony</argument>
