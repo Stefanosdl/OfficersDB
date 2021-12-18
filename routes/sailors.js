@@ -64,7 +64,8 @@ router.get("/update/:id", catchAsync(async (req, res) => {
 }));
 
 router.put("/update/:id", catchAsync(async (req, res) => {
-    const sailor = await Sailor.findOneAndUpdate(req.params.id, req.body.arr).populate("disposals").exec();
+    const searchedSailors = await Sailor.find(({"lastname" : {$regex : req.body.arr.lastname}})).populate("disposals").exec();
+    const sailor = await Sailor.findByIdAndUpdate(searchedSailors[0].id, { ...req.body.arr});
 
     sailor.totalTimeoff = sailor.defaultTimeoff + sailor.bloodDonation*4 + sailor.vaccineTimeoff*5;
 
@@ -75,6 +76,7 @@ router.put("/update/:id", catchAsync(async (req, res) => {
         }
     }
 
+    await sailor.disposals.push();
     await sailor.save();
 
     req.flash("success", "Επιτυχής ενημέρωση!");
